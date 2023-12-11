@@ -9,7 +9,7 @@ terraform {
 
 provider "google" {
     project = "swetha-sceg"
-  credentials = file("key.json")
+  /*credentials = file("key.json")*/
 }
 
 module "vm-instances" {
