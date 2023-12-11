@@ -13,7 +13,7 @@ provider "google" {
 }
 
 module "vm-instances" {
-    source = "./vm-instances"
+    source = "./module/vm-instances"
     vpc-name = var.virtual-name
     auto-name = var.automate-name
     subnet-name = var.subnetwork-name
@@ -27,28 +27,28 @@ module "vm-instances" {
 
 }
 module "bigquery"{
-    source = "./biquery"
+    source = "./module/biquery"
     dataset-name = var.data-name
     location-name = var.region-name
     table-name = var.table-id-name
     
 }
 module "gcs" {
-    source = "./gcs"
+    source = "./module/gcs"
     bucket-name = var.buck-name
     bucket-location = var.location-name
     bucket-class = var.class-name
     
 }
 module "stack-driver" {
-    source = "./stack-driver"
+    source = "./module/stack-driver"
     stackdriver-name = var.stack-name
     destination = module.gcs.bucket-name
 
 } 
     
 module "datatransfer" {
-    source = "./datatransfer"
+    source = "./module/datatransfer"
     project-name = var.projecting-name
     schedule-name = var.scheduling-name
     display_name = var.displaying-name
